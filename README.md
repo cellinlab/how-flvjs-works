@@ -44,22 +44,23 @@ sequenceDiagram
     participant MediaSource
     participant VideoServer
 
-    VideoElement->>FlvPlayer: 请求视频播放
-    FlvPlayer->>Transmuxer: 初始化转封装器
-    Transmuxer->>TransmuxingController: 开始转封装
-    TransmuxingController->>IOController: 发起数据加载请求
-    IOController->>IO Loaders: 加载视频数据
-    IO Loaders->>VideoServer: 请求视频数据
-    VideoServer-->>IO Loaders: 返回视频数据
-    IO Loaders->>IOController: 返回加载的视频数据
-    IOController->>TransmuxingController: 传递加载的视频数据
-    TransmuxingController->>FLVDemuxer: 解析 FLV 数据
-    FLVDemuxer->>MP4Remuxer: 转换为 MP4 格式
-    MP4Remuxer->>TransmuxingController: 返回转封装后的数据
-    TransmuxingController->>FlvPlayer: 传递转封装后的数据
-    FlvPlayer->>MSEController: 添加媒体片段
-    MSEController->>MediaSource: 向媒体源添加媒体片段
-    MediaSource->>VideoElement: 更新视频源
+    VideoElement->>FlvPlayer: Request video playback
+    FlvPlayer->>Transmuxer: Initialize transmuxer
+    Transmuxer->>TransmuxingController: Start transmuxing
+    TransmuxingController->>IOController: Initiate data loading request
+    IOController->>IO Loaders: Load video data
+    IO Loaders->>VideoServer: Request video data
+    VideoServer-->>IO Loaders: Return video data
+    IO Loaders->>IOController: Return loaded video data
+    IOController->>TransmuxingController: Pass loaded video data
+    TransmuxingController->>FLVDemuxer: Parse FLV data
+    FLVDemuxer->>MP4Remuxer: Convert to MP4 format
+    MP4Remuxer->>TransmuxingController: Return remuxed data
+    TransmuxingController->>FlvPlayer: Pass remuxed data
+    FlvPlayer->>MSEController: Append media segment
+    MSEController->>MediaSource: Add media segment to MediaSource
+    MediaSource->>VideoElement: Update video source
+
 
 ```
 
@@ -108,3 +109,5 @@ graph TD
     K -->|16. Update video source| A
 
 ```
+
+## Code Analysis and Demo Explanation

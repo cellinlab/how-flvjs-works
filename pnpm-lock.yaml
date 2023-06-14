@@ -12,23 +12,32 @@ specifiers:
   '@vitejs/plugin-react': ^4.0.0
   autoprefixer: ^10.4.14
   cz-conventional-changelog: ^3.3.0
+  es6-promise: ^4.2.8
   eslint: ^8.38.0
   eslint-plugin-react-hooks: ^4.6.0
   eslint-plugin-react-refresh: ^0.3.4
+  events: ^3.3.0
   postcss: ^8.4.24
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-router-dom: ^6.12.1
+  sass: ^1.63.4
   tailwindcss: ^3.3.2
   typescript: ^5.0.2
   vite: ^4.3.9
+  webworkify-webpack: ^2.1.5
 
 dependencies:
   '@emotion/react': 11.11.1_amj33xoxfucvzb42rb6rqg7bp4
   '@emotion/styled': 11.11.0_533ehcmi7sq5dugudeoogi7hmm
   '@mui/icons-material': 5.11.16_rkrahsrzrx2h25jhj6lp34j7hq
   '@mui/material': 5.13.5_cf5bl3z2gjfwdfs5v3x2ie554i
+  es6-promise: 4.2.8
+  events: 3.3.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-router-dom: 6.12.1_biqbaboplfbrettd7655fr4n2y
+  webworkify-webpack: 2.1.5
 
 devDependencies:
   '@types/react': 18.2.12
@@ -42,9 +51,10 @@ devDependencies:
   eslint-plugin-react-hooks: 4.6.0_eslint@8.42.0
   eslint-plugin-react-refresh: 0.3.5_eslint@8.42.0
   postcss: 8.4.24
+  sass: 1.63.4
   tailwindcss: 3.3.2
   typescript: 5.1.3
-  vite: 4.3.9
+  vite: 4.3.9_sass@1.63.4
 
 packages:
 
@@ -964,6 +974,11 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
+  /@remix-run/router/1.6.3:
+    resolution: {integrity: sha512-EXJysQ7J3veRECd0kZFQwYYd5sJMcq2O/m60zu1W2l3oVQ9xtub8jTOtYRE0+M2iomyG/W3Ps7+vp2kna0C27Q==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@tsconfig/node10/1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
     dev: true
@@ -1172,7 +1187,7 @@ packages:
       '@babel/plugin-transform-react-jsx-self': 7.22.5_@babel+core@7.22.5
       '@babel/plugin-transform-react-jsx-source': 7.22.5_@babel+core@7.22.5
       react-refresh: 0.14.0
-      vite: 4.3.9
+      vite: 4.3.9_sass@1.63.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1655,6 +1670,10 @@ packages:
     dependencies:
       is-arrayish: 0.2.1
 
+  /es6-promise/4.2.8:
+    resolution: {integrity: sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==}
+    dev: false
+
   /esbuild/0.17.19:
     resolution: {integrity: sha512-XQ0jAPFkK/u3LcVRcvVHQcTIqD6E2H1fvZMA5dQPSOWb3suUbWbfbRf94pjc0bNzRYLfIrDRQXr7X+LHIm5oHw==}
     engines: {node: '>=12'}
@@ -1821,6 +1840,11 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /events/3.3.0:
+    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
+    engines: {node: '>=0.8.x'}
+    dev: false
 
   /expand-tilde/2.0.2:
     resolution: {integrity: sha512-A5EmesHW6rfnZ9ysHQjPdJRni0SRar0tjtG5MNtm9n5TUvsYU8oozprtRD4AqHxcZWWlVuAmQo2nWKfN9oyjTw==}
@@ -2104,6 +2128,10 @@ packages:
   /ignore/5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
+    dev: true
+
+  /immutable/4.3.0:
+    resolution: {integrity: sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==}
     dev: true
 
   /import-fresh/3.3.0:
@@ -2678,6 +2706,29 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /react-router-dom/6.12.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-POIZN9UDKWwEDga054LvYr2KnK8V+0HR4Ny4Bwv8V7/FZCPxJgsCjYxXGxqxzHs7VBxMKZfgvtKhafuJkJSPGA==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.6.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.12.1_react@18.2.0
+    dev: false
+
+  /react-router/6.12.1_react@18.2.0:
+    resolution: {integrity: sha512-evd/GrKJOeOypD0JB9e1r7pQh2gWCsTbUfq059Wm1AFT/K2MNZuDo19lFtAgIhlBrp0MmpgpqtvZC7LPAs7vSw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.6.3
+      react: 18.2.0
+    dev: false
+
   /react-transition-group/4.4.5_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -2816,6 +2867,16 @@ packages:
 
   /safer-buffer/2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+    dev: true
+
+  /sass/1.63.4:
+    resolution: {integrity: sha512-Sx/+weUmK+oiIlI+9sdD0wZHsqpbgQg8wSwSnGBjwb5GwqFhYNwwnI+UWZtLjKvKyFlKkatRK235qQ3mokyPoQ==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.0
+      source-map-js: 1.0.2
     dev: true
 
   /scheduler/0.23.0:
@@ -3114,7 +3175,7 @@ packages:
     dev: true
     optional: true
 
-  /vite/4.3.9:
+  /vite/4.3.9_sass@1.63.4:
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3142,6 +3203,7 @@ packages:
       esbuild: 0.17.19
       postcss: 8.4.24
       rollup: 3.25.1
+      sass: 1.63.4
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -3151,6 +3213,10 @@ packages:
     dependencies:
       defaults: 1.0.4
     dev: true
+
+  /webworkify-webpack/2.1.5:
+    resolution: {integrity: sha512-2akF8FIyUvbiBBdD+RoHpoTbHMQF2HwjcxfDvgztAX5YwbZNyrtfUMgvfgFVsgDhDPVTlkbb5vyasqDHfIDPQw==}
+    dev: false
 
   /which/1.3.1:
     resolution: {integrity: sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==}
