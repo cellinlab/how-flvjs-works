@@ -32,7 +32,7 @@ const Home = () => {
       const xhr = new XMLHttpRequest();
       console.log("xhr GET url: ", msURL);
       xhr.open("GET", msURL, true);
-      xhr.onload = function (e) {
+      xhr.onload = function () {
         const mediaDataSource = JSON.parse(xhr.response);
         console.log("xhr get mediaDataSource: ", mediaDataSource);
         flvLoadMDS(mediaDataSource);
