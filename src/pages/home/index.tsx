@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Button, TextField, FormControlLabel, Checkbox, Box, Tab, Tabs } from "@mui/material";
 import FlvJs from "flv.js";
 
@@ -7,7 +7,7 @@ import TabPanel from "../../components/TabPanel";
 
 const Home = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const playerRef = useRef(null);
+  const playerRef = useRef<FlvJs.Player | null>(null);
   const [isLive, setIsLive] = useLocalStorage("isLive", false);
   const [withCredentials, setWithCredentials] = useLocalStorage("withCredentials", false);
   const [hasAudio, setHasAudio] = useLocalStorage("hasAudio", true);
@@ -15,7 +15,7 @@ const Home = () => {
   const [inputMode, setInputMode] = useLocalStorage("inputMode", "StreamURL");
   const [sURL, setSURL] = useLocalStorage("sURL", "");
   const [msURL, setMsURL] = useLocalStorage("msURL", "");
-  const [logcat, setLogcat] = useState("");
+  // const [logcat, setLogcat] = useState("");
   const [seekPoint, setSeekPoint] = useState("0");
 
   const switchInputMode = () => {
