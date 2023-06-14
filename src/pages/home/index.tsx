@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button, TextField, FormControlLabel, Checkbox, Box, Tab, Tabs } from "@mui/material";
-import FlvJs from "../../lib/flvjs/index.js";
+import FlvJs from "flv.js";
 
 import { useLocalStorage } from "../../hooks";
 import TabPanel from "../../components/TabPanel";
