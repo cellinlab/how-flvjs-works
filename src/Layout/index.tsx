@@ -31,6 +31,16 @@ const Layout = () => {
                 Data Loading
               </Link>
             </li>
+            <li>
+              <Link component={RouterLink} to="/demuxer" className="block hover:bg-slate-300">
+                Flv Demuxer
+              </Link>
+            </li>
+            <li>
+              <Link component={RouterLink} to="/remuxer" className="block hover:bg-slate-300">
+                MP4 Remuxer
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

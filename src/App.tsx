@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/react";
 import Layout from "./Layout";
 import Home from "./pages/home";
 import Data from "./pages/data";
+import Demuxer from "./pages/demuxer";
+import Remuxer from "./pages/remuxer";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/data" element={<Data />} />
+          <Route path="/demuxer" element={<Demuxer />} />
+          <Route path="/remuxer" element={<Remuxer />} />
         </Route>
       </Routes>
       <Analytics />

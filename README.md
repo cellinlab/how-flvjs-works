@@ -110,7 +110,9 @@ graph TD
 
 ```
 
-#### Loading data from server
+## Code Analysis and Demo Explanation
+
+### Loading data from server
 
 ```mermaid
 sequenceDiagram
@@ -146,4 +148,52 @@ sequenceDiagram
   FetchStreamLoader-->>IOController: error occurred
 ```
 
-## Code Analysis and Demo Explanation
+See Demo: [Loading data from server](https://how-flvjs-works.cellinlab.com/data).
+
+### Parse FLV data
+
+```mermaid
+sequenceDiagram
+    participant IOController
+    participant TransmuxingController
+    participant FLVDemuxer
+    participant MP4Remuxer
+
+    Note over IOController: Received ArrayBuffer
+    IOController->>TransmuxingController: Data Ready event
+    TransmuxingController->>FLVDemuxer: Call _demuxFLV() with ArrayBuffer
+    FLVDemuxer->>FLVDemuxer: Parse FLV header information
+    loop Parse FLV tags
+        FLVDemuxer->>FLVDemuxer: Parse tag type, data size, timestamp, etc.
+        alt Tag type is audio
+            FLVDemuxer->>FLVDemuxer: Parse audio data
+        else Tag type is video
+            FLVDemuxer->>FLVDemuxer: Parse video data
+        end
+    end
+
+    FLVDemuxer-->>TransmuxingController: Send audio data
+    TransmuxingController->>MP4Remuxer: Process audio data
+    FLVDemuxer-->>TransmuxingController: Send video data
+    TransmuxingController->>MP4Remuxer: Process video data
+
+    alt Initial media metadata dispatched
+        TransmuxingController->>MP4Remuxer: Send audio track data
+        MP4Remuxer->>MP4Remuxer: Process audio data
+        TransmuxingController->>MP4Remuxer: Send video track data
+        MP4Remuxer->>MP4Remuxer: Process video data
+    else Initial media metadata not dispatched
+        TransmuxingController-->>TransmuxingController: Update media metadata
+        alt Both audio and video tracks exist
+            TransmuxingController-->>MP4Remuxer: Send audio track data
+            MP4Remuxer->>MP4Remuxer: Process audio data
+            TransmuxingController-->>MP4Remuxer: Send video track data
+            MP4Remuxer->>MP4Remuxer: Process video data
+            TransmuxingController-->>TransmuxingController: Dispatch initial media metadata
+        else Only audio track exists
+            TransmuxingController-->>MP4Remuxer: Send audio track data
+            MP4Remuxer->>MP4Remuxer: Process audio data
+            TransmuxingController-->>TransmuxingController: Dispatch initial media metadata
+        end
+    end
+```
