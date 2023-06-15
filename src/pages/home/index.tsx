@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button, TextField, FormControlLabel, Checkbox, Box, Tab, Tabs } from "@mui/material";
 import FlvJs from "flv.js";
 
@@ -8,6 +8,7 @@ import TabPanel from "../../components/TabPanel";
 const Home = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const playerRef = useRef<FlvJs.Player | null>(null);
+  const logBoxRef = useRef<HTMLTextAreaElement>(null);
   const [isLive, setIsLive] = useLocalStorage("isLive", false);
   const [withCredentials, setWithCredentials] = useLocalStorage("withCredentials", false);
   const [hasAudio, setHasAudio] = useLocalStorage("hasAudio", true);
@@ -15,8 +16,24 @@ const Home = () => {
   const [inputMode, setInputMode] = useLocalStorage("inputMode", "StreamURL");
   const [sURL, setSURL] = useLocalStorage("sURL", "");
   const [msURL, setMsURL] = useLocalStorage("msURL", "");
-  // const [logcat, setLogcat] = useState("");
+  const [log, setLog] = useState("");
   const [seekPoint, setSeekPoint] = useState("0");
+
+  useEffect(() => {
+    initLogListener();
+    return () => {
+      flvDestroy();
+    };
+  }, []);
+
+  const initLogListener = () => {
+    FlvJs.LoggingControl.addLogListener((type, str) => {
+      setLog((log) => log + str + "\n");
+      if (logBoxRef.current) {
+        logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight;
+      }
+    });
+  };
 
   const switchInputMode = () => {
     if (inputMode === "StreamURL") {
@@ -125,17 +142,22 @@ const Home = () => {
           <TabPanel value={inputMode} index={"StreamURL"}>
             <div className="flex flex-col">
               <div className="flex flex-row">
-                <TextField
-                  id="outlined-basic"
-                  label="URL"
-                  variant="outlined"
-                  fullWidth
-                  value={sURL}
-                  onChange={(e) => setSURL(e.target.value)}
-                />
-                <Button variant="contained" onClick={() => setSURL("")}>
-                  Clear
-                </Button>
+                <Box mr={2} className="flex-1">
+                  <TextField
+                    id="outlined-basic"
+                    label="URL"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    value={sURL}
+                    onChange={(e) => setSURL(e.target.value)}
+                  />
+                </Box>
+                <Box>
+                  <Button variant="contained" onClick={() => setSURL("")}>
+                    Clear
+                  </Button>
+                </Box>
               </div>
               <div className="flex flex-row">
                 <FormControlLabel
@@ -204,33 +226,48 @@ const Home = () => {
             </video>
           </div>
         </div>
-        <div className="interact-options">
-          <div className="flex justify-around">
-            <Button variant="contained" size="small" onClick={flvLoad}>
-              Load
-            </Button>
-            <Button variant="contained" onClick={flvStart}>
-              Start
-            </Button>
-            <Button variant="contained" onClick={flvPause}>
-              Pause
-            </Button>
-            <Button variant="contained" onClick={flvDestroy}>
-              Destroy
-            </Button>
-            <TextField
-              id="outlined-basic"
-              label="Seek Point"
-              variant="outlined"
-              value={seekPoint}
-              onChange={(e) => setSeekPoint(e.target.value)}
-            />
-            <Button variant="contained" onClick={flvSeekTo}>
-              Seek To
-            </Button>
+        <div className="interact-options mb-4">
+          <div className="flex">
+            <Box mr={2}>
+              <Button variant="contained" onClick={flvLoad}>
+                Load
+              </Button>
+            </Box>
+            <Box mr={2}>
+              <Button variant="contained" onClick={flvStart}>
+                Start
+              </Button>
+            </Box>
+            <Box mr={2}>
+              <Button variant="contained" onClick={flvPause}>
+                Pause
+              </Button>
+            </Box>
+            <Box mr={2}>
+              <Button variant="contained" onClick={flvDestroy}>
+                Destroy
+              </Button>
+            </Box>
+            <Box mr={1}>
+              <TextField
+                id="outlined-basic"
+                label="Seek Point"
+                variant="outlined"
+                size="small"
+                value={seekPoint}
+                onChange={(e) => setSeekPoint(e.target.value)}
+              />
+            </Box>
+            <Box>
+              <Button variant="contained" onClick={flvSeekTo}>
+                SeekTo
+              </Button>
+            </Box>
           </div>
         </div>
-        <div className="log-wrap"></div>
+        <div className="log-wrap">
+          <textarea value={log} rows={10} readOnly ref={logBoxRef} className="w-full"></textarea>
+        </div>
       </div>
     </>
   );
