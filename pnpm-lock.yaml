@@ -9,6 +9,7 @@ specifiers:
   '@types/react-dom': ^18.0.11
   '@typescript-eslint/eslint-plugin': ^5.59.0
   '@typescript-eslint/parser': ^5.59.0
+  '@vercel/analytics': ^1.0.1
   '@vitejs/plugin-react': ^4.0.0
   autoprefixer: ^10.4.14
   cz-conventional-changelog: ^3.3.0
@@ -30,6 +31,7 @@ dependencies:
   '@emotion/styled': 11.11.0_533ehcmi7sq5dugudeoogi7hmm
   '@mui/icons-material': 5.11.16_rkrahsrzrx2h25jhj6lp34j7hq
   '@mui/material': 5.13.5_cf5bl3z2gjfwdfs5v3x2ie554i
+  '@vercel/analytics': 1.0.1
   flv.js: 1.6.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1172,6 +1174,10 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
+  /@vercel/analytics/1.0.1:
+    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
+    dev: false
+
   /@vitejs/plugin-react/4.0.0_vite@4.3.9:
     resolution: {integrity: sha512-HX0XzMjL3hhOYm+0s95pb0Z7F8O81G7joUHgfDd/9J/ZZf5k4xX6QAMFkKsHFxaHlf6X7GD7+XuaZ66ULiJuhQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -1288,6 +1294,7 @@ packages:
   /autoprefixer/10.4.14_postcss@8.4.24:
     resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
     engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
@@ -3049,6 +3056,7 @@ packages:
 
   /ts-node/10.9.1_hqy5jyg3mtmsx53qop37hf36vu:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
+    hasBin: true
     peerDependencies:
       '@swc/core': '>=1.2.50'
       '@swc/wasm': '>=1.2.50'
@@ -3125,6 +3133,7 @@ packages:
 
   /update-browserslist-db/1.0.11_browserslist@4.21.8:
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
+    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
@@ -3151,6 +3160,7 @@ packages:
   /vite/4.3.9_sass@1.63.4:
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
     peerDependencies:
       '@types/node': '>= 14'
       less: '*'
