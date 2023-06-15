@@ -28,7 +28,7 @@ const Home = () => {
 
   const initLogListener = () => {
     FlvJs.LoggingControl.addLogListener((type, str) => {
-      setLog((log) => log + str + "\n");
+      setLog((log) => log + `${type}: ${str}\n`);
       if (logBoxRef.current) {
         logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight;
       }

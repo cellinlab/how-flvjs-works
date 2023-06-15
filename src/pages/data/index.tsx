@@ -105,6 +105,7 @@ const Data = () => {
       to: -1,
     };
 
+    // @ts-ignore
     loaderRef.current?.open(dataSource, range);
   };
 
