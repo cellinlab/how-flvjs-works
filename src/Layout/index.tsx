@@ -12,8 +12,23 @@ const Layout = () => {
         <nav className="text-lg">
           <ul>
             <li>
+              <Link
+                to={"https://github.com/cellinlab/how-flvjs-works#readme"}
+                target="_blank"
+                component={RouterLink}
+                className="block hover:bg-slate-300"
+              >
+                Docs
+              </Link>
+            </li>
+            <li>
               <Link component={RouterLink} to="/" className="block hover:bg-slate-300">
                 Official Demo
+              </Link>
+            </li>
+            <li>
+              <Link component={RouterLink} to="/data" className="block hover:bg-slate-300">
+                Data Loading
               </Link>
             </li>
           </ul>

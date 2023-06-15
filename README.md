@@ -110,4 +110,40 @@ graph TD
 
 ```
 
+#### Loading data from server
+
+```mermaid
+sequenceDiagram
+  participant IOController
+  participant FetchStreamLoader
+  participant FetchAPI
+  participant SeekHandler
+
+  IOController->>FetchStreamLoader: open(dataSource, range)
+  FetchStreamLoader->>SeekHandler: getConfig(sourceURL, range)
+  SeekHandler->>FetchStreamLoader: seekConfig
+  FetchStreamLoader->>FetchAPI: fetch(seekConfig.url, params)
+  FetchAPI->>FetchStreamLoader: res
+  FetchStreamLoader->>FetchAPI: check response status and validity
+  FetchStreamLoader->>+FetchAPI: res.ok && (res.status >= 200 && res.status <= 299)
+  FetchAPI->>FetchStreamLoader: res.body.getReader()
+  FetchStreamLoader->>FetchAPI: pump(reader)
+  FetchAPI-->>FetchStreamLoader: chunk
+  FetchStreamLoader->>IOController: onDataArrival(chunk, byteStart, receivedLength)
+  FetchAPI-->>FetchStreamLoader: chunk (next iteration)
+  FetchStreamLoader-->>FetchAPI: continue pumping
+  FetchAPI-->>FetchStreamLoader: result.done=true
+  FetchStreamLoader->>FetchAPI: handle end of stream
+  FetchAPI-->>FetchStreamLoader: contentLength != null && receivedLength < contentLength
+  FetchStreamLoader-->>FetchAPI: report Early-EOF
+  FetchAPI-->>FetchStreamLoader: contentLength=null || receivedLength >= contentLength
+  FetchStreamLoader->>FetchAPI: handle complete download
+  FetchAPI-->>FetchStreamLoader: notify download completion
+  FetchStreamLoader->>IOController: onComplete(from, to)
+  FetchStreamLoader-->>IOController: download complete
+  FetchAPI-->>FetchStreamLoader: res.ok=false or (res.status < 200 || res.status > 299)
+  FetchStreamLoader->>IOController: onError(HTTP_STATUS_CODE_INVALID, { code, msg })
+  FetchStreamLoader-->>IOController: error occurred
+```
+
 ## Code Analysis and Demo Explanation

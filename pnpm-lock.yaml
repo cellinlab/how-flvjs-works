@@ -13,9 +13,11 @@ specifiers:
   '@vitejs/plugin-react': ^4.0.0
   autoprefixer: ^10.4.14
   cz-conventional-changelog: ^3.3.0
+  es6-promise: ^4.2.8
   eslint: ^8.38.0
   eslint-plugin-react-hooks: ^4.6.0
   eslint-plugin-react-refresh: ^0.3.4
+  events: ^3.3.0
   flv.js: ^1.6.2
   postcss: ^8.4.24
   react: ^18.2.0
@@ -25,6 +27,7 @@ specifiers:
   tailwindcss: ^3.3.2
   typescript: ^5.0.2
   vite: ^4.3.9
+  webworkify-webpack: ^2.1.5
 
 dependencies:
   '@emotion/react': 11.11.1_amj33xoxfucvzb42rb6rqg7bp4
@@ -32,10 +35,13 @@ dependencies:
   '@mui/icons-material': 5.11.16_rkrahsrzrx2h25jhj6lp34j7hq
   '@mui/material': 5.13.5_cf5bl3z2gjfwdfs5v3x2ie554i
   '@vercel/analytics': 1.0.1
+  es6-promise: 4.2.8
+  events: 3.3.0
   flv.js: 1.6.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.12.1_biqbaboplfbrettd7655fr4n2y
+  webworkify-webpack: 2.1.5
 
 devDependencies:
   '@types/react': 18.2.12
@@ -1836,6 +1842,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /events/3.3.0:
+    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
+    engines: {node: '>=0.8.x'}
+    dev: false
+
   /expand-tilde/2.0.2:
     resolution: {integrity: sha512-A5EmesHW6rfnZ9ysHQjPdJRni0SRar0tjtG5MNtm9n5TUvsYU8oozprtRD4AqHxcZWWlVuAmQo2nWKfN9oyjTw==}
     engines: {node: '>=0.10.0'}
@@ -2356,6 +2367,7 @@ packages:
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
     dependencies:
       js-tokens: 4.0.0
     dev: false

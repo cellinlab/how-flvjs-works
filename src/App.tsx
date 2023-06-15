@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import Layout from "./Layout";
 import Home from "./pages/home";
+import Data from "./pages/data";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/data" element={<Data />} />
         </Route>
       </Routes>
       <Analytics />
