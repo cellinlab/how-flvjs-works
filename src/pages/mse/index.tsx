@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Button, TextField, Box } from "@mui/material";
+import { Button, TextField, Box, Alert } from "@mui/material";
 
 //@ts-ignore
 import FetchStreamLoader from "../../lib/flvjs/src/io/fetch-stream-loader.js";
@@ -165,6 +165,9 @@ const Mse = () => {
     <>
       <h1 className="text-2xl">MP4 Remuxer</h1>
       <div className="flex flex-col p-4">
+        <Box className="w-full mt-4">
+          <Alert severity="info">Open the console to view details !</Alert>
+        </Box>
         <Box className="w-full mt-4">
           <TextField
             fullWidth

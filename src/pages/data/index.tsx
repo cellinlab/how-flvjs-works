@@ -4,7 +4,7 @@ import FetchStreamLoader from "../../lib/flvjs/src/io/fetch-stream-loader.js";
 //@ts-ignore
 import RangeSeekHandler from "../../lib/flvjs/src/io/range-seek-handler.js";
 
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, Alert } from "@mui/material";
 
 import HexViewer from "../../components/HexViewer/index.js";
 import type { HexViewerRef } from "../../components/HexViewer/index.js";
@@ -113,6 +113,9 @@ const Data = () => {
     <>
       <h1 className="text-2xl">Data Loading</h1>
       <div className="flex flex-col p-4">
+        <Box className="w-full mt-4">
+          <Alert severity="info">Open the console to view details !</Alert>
+        </Box>
         <Box className="w-full mt-4">
           <TextField
             className="w-full"
