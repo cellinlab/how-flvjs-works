@@ -161,7 +161,7 @@ sequenceDiagram
 
     Note over IOController: Received ArrayBuffer
     IOController->>TransmuxingController: Data Ready event
-    TransmuxingController->>FLVDemuxer: Call _demuxFLV() with ArrayBuffer
+    TransmuxingController->>FLVDemuxer: Call parseChunks() with ArrayBuffer
     FLVDemuxer->>FLVDemuxer: Parse FLV header information
     loop Parse FLV tags
         FLVDemuxer->>FLVDemuxer: Parse tag type, data size, timestamp, etc.
