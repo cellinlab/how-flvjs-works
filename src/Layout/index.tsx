@@ -41,6 +41,11 @@ const Layout = () => {
                 MP4 Remuxer
               </Link>
             </li>
+            <li>
+              <Link component={RouterLink} to="/mse" className="block hover:bg-slate-300">
+                Media Source Extensions
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

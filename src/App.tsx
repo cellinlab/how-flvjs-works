@@ -6,6 +6,7 @@ import Home from "./pages/home";
 import Data from "./pages/data";
 import Demuxer from "./pages/demuxer";
 import Remuxer from "./pages/remuxer";
+import Mse from "./pages/mse";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/data" element={<Data />} />
           <Route path="/demuxer" element={<Demuxer />} />
           <Route path="/remuxer" element={<Remuxer />} />
+          <Route path="/mse" element={<Mse />} />
         </Route>
       </Routes>
       <Analytics />
